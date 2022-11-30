@@ -1,0 +1,1 @@
+const clientUrl = 'http://buildpay.co.kr';
