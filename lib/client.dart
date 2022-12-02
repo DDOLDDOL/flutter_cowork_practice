@@ -64,12 +64,12 @@ class Client {
   //       }),
   // );
 
-  void ClientQuery() {
+  void clientQuery() {
     client.query(QueryOptions(document: gql(getPostByID)));
     print('${getPostByID}');
   }
 }
 
-void ClientMutation() {
+void clientMutation() {
 
 }
