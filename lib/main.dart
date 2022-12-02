@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cowork_practice/client.dart';
+import 'package:flutter_cowork_practice/login/login_page.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:graphql_music_1116/api.dart';
-import 'package:graphql_music_1116/config.dart';
-import 'package:graphql_music_1116/login/cubit/token_cubit.dart';
+
 
 // import 'package:graphql_music_1116/cubit/deep_link_cubit.dart';
-import 'package:graphql_music_1116/login/login_page.dart';
-import 'package:graphql_music_1116/utils/constants.dart';
+
 import 'package:provider/provider.dart';
+
+import 'login/token/token_cubit.dart';
+import 'utils/constants.dart';
 
 void main() => runApp(const MyApp());
 
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tokenCubit = TokenCubit();
-    final client = Config(origin: '$clientUrl/graphql', tokenCubit: tokenCubit);
+    final client = Client(origin: '$clientUrl/graphql', tokenCubit: tokenCubit);
 
     return MultiProvider(
       providers: [

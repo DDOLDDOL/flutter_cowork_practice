@@ -1,9 +1,10 @@
+import 'package:flutter_cowork_practice/client.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:graphql_music_1116/config.dart';
+
 
 
 class LoginRepository {
-  final Config client;
+  final Client client;
   const LoginRepository(this.client);
 
 }
