@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cowork_practice/api.dart';
-import 'package:flutter_cowork_practice/login/cubit/token_cubit.dart';
+import 'package:flutter_cowork_practice/login/token/token_cubit.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 
-class Config {
+class Client {
   final TokenCubit tokenCubit;
-  Config({
+  Client({
     required String origin,
     required this.tokenCubit,
   });
@@ -64,12 +64,12 @@ class Config {
   //       }),
   // );
 
-  void Config_Query() {
+  void clientQuery() {
     client.query(QueryOptions(document: gql(getPostByID)));
     print('${getPostByID}');
   }
 }
 
-void Config_Mutation() {
-  result.mutate()
+void clientMutation() {
+
 }
