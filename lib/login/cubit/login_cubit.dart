@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter_cowork_practice/login/repository/login_repository.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:graphql_music_1116/login/repository/login_repository.dart';
+
 
 part 'login_state.dart';
 
