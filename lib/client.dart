@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_cowork_practice/api.dart';
 import 'package:flutter_cowork_practice/login/token/token_cubit.dart';
@@ -5,37 +7,29 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 
 
 class Client {
-  final TokenCubit tokenCubit;
   Client({
     required String origin,
     required this.tokenCubit,
-  });
+  }) {
+    authLink = AuthLink(
+      getToken: () => tokenCubit.state.accessToken,
+    );
+    link = authLink.concat(httpLink);
+
+    client = GraphQLClient(
+      link: link,
+      cache: GraphQLCache(),
+      defaultPolicies: DefaultPolicies(
+        query: Policies(fetch: FetchPolicy.networkOnly),
+      ),
+    );
+  }
+
   final httpLink = HttpLink('http://buildpay.co.kr');
-
-  final authLink = AuthLink(
-    getToken: () async {
-      return tokenCubit;
-    },
-  );
-  final link = authLink.concat(httpLink);
-
-  // ValueNotifier<GraphQLClient> client = ValueNotifier(GraphQLClient(
-  //   link: link,
-  //   cache: GraphQLCache(),
-  //   defaultPolicies: DefaultPolicies(
-  //     query: Policies(fetch: FetchPolicy.networkOnly),
-  //   ),
-  // ));
-  final client = GraphQLClient(
-    link: link,
-    cache: GraphQLCache(),
-    defaultPolicies: DefaultPolicies(
-      query: Policies(fetch: FetchPolicy.networkOnly),
-    ),
-  );
-  void token =  TokenCubit(
-    
-  );
+  final TokenCubit tokenCubit;
+  late final AuthLink authLink;
+  late final Link link;
+  late final GraphQLClient client;
 
 // final result = await mutate(
 //   MutationOptions(
@@ -66,7 +60,6 @@ class Client {
 
   void clientQuery() {
     client.query(QueryOptions(document: gql(getPostByID)));
-    print('${getPostByID}');
   }
 }
 
