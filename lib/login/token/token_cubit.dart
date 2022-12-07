@@ -12,5 +12,5 @@ class TokenCubit extends Cubit<TokenState>{
       emit(TokenState(token, state.refreshToken));
 
 
-  void setTokens(String token) => emit(TokenState(state.accessToken, state.refreshToken));
+  void setTokens(String accesstoken, String refreshToken) => emit(TokenState(state.accessToken, state.refreshToken));
 }
