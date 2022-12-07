@@ -9,7 +9,7 @@ abstract class LoginState {
 
 class LoginInitial extends LoginState {}
 
-class LoginLoaded extends LoginState {
+// class LoginLoaded extends LoginState {
   // final String userId;
   // const LoginLoaded(this.userId);
   //
@@ -21,7 +21,7 @@ class LoginLoaded extends LoginState {
   // }
   // @override
   // int get hashCode => userId.hashCode;
-}
+// }
 
 class LoginLoading extends LoginState {}
 
