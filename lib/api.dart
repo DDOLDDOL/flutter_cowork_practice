@@ -28,14 +28,24 @@ String fetchUsers = r'''
     }
 ''';
 
-String tokenAuth = r'''
-  login($id: String!, $password: String!) {
-    login {
-      tokenAuth {
+// String tokenAuth = r'''
+//   login($id: String!, $password: String!) {
+//     login {
+//       tokenAuth {
+//       success
+//       accesstoken
+//       refreshtoken
+//      }
+//    }
+//   }
+// ''';
+
+String login = r"""
+  mutation Login($username: String!, $password: String!) {
+    tokenAuth(username: $username, password: $password) {
       success
-      accesstoken
+      token
       refreshtoken
-     }
-   }
+    }
   }
-''';
+""";
