@@ -29,7 +29,7 @@ String fetchUsers = r'''
 ''';
 
 String tokenAuth = r'''
-  login($id: String!, $password: password) {
+  login($id: String!, $password: String!) {
     login {
       tokenAuth {
       success
