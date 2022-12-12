@@ -18,7 +18,7 @@ String createPost = r'''
 ''';
 
 // Subscription => Query와 비슷하지만 web socket과 stream을 사용하여 실시간으로 변화는 데이터 조회
-String fetchUsers = '''
+String fetchUsers = r'''
   subscription fetchOnlineUsers {
     online_users {
       user {
@@ -26,4 +26,16 @@ String fetchUsers = '''
       }
      }
     }
+''';
+
+String tokenAuth = r'''
+  login($id: String!, $password: password) {
+    login {
+      tokenAuth {
+      success
+      accesstoken
+      refreshtoken
+     }
+   }
+  }
 ''';
